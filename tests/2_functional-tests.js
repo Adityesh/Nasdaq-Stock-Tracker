@@ -24,27 +24,73 @@ suite('Functional Tests', function() {
         .end(function(err, res){
           
           //complete this one too
-          
+          assert.equal(res.status,200)
+          assert.isDefined(res.body['stock'])
+          assert.isDefined(res.body['price'])
+          assert.isDefined(res.body['likes'])
           done();
         });
       });
       
       test('1 stock with like', function(done) {
-        
+        chai.request(server)
+        .get('/api/stock-prices?like=true')
+        .query({stock: 'goog'})
+        .end(function(err, res){
+          
+          //complete this one too
+          assert.equal(res.status,200)
+          assert.isDefined(res.body['stock'])
+          assert.isDefined(res.body['price'])
+          assert.isDefined(res.body['likes'])
+          done();
+        });
       });
       
       test('1 stock with like again (ensure likes arent double counted)', function(done) {
-        
+        chai.request(server)
+        .get('/api/stock-prices?like=true')
+        .query({stock: 'goog'})
+        .end(function(err, res){
+          
+          //complete this one too
+          assert.equal(res.status,200)
+          assert.isDefined(res.body['stock'])
+          assert.isDefined(res.body['price'])
+          assert.isDefined(res.body['likes'])
+          done();
+        });
       });
       
       test('2 stocks', function(done) {
-        
+        chai.request(server)
+        .get('/api/stock-prices')
+        .query({stock: 'goog'})
+        .end(function(err, res){
+          
+          //complete this one too
+          assert.equal(res.status,200)
+          
+          
+          done();
+        });
       });
       
       test('2 stocks with like', function(done) {
-        
+        chai.request(server)
+        .get('/api/stock-prices')
+        .query({stock: 'goog'})
+        .end(function(err, res){
+          
+          //complete this one too
+          assert.equal(res.status,200)
+          
+          
+          done();
+        });
       });
       
-    });
+    })
+    
 
 });
